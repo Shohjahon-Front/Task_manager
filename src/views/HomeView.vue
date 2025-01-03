@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div v-for="project in projects" :key="project.id">
-      <SingleProdject :project="project" @project-deleted="handleProject" />
+      <SingleProdject :project="project" @project-deleted="handleProject" @project-updated="handleComplate" />
     </div>
   </div>
 </template>
@@ -31,6 +31,14 @@ export default {
   methods: {
     handleProject(id) {
       this.projects = this.projects.filter(project => project.id !== id)
+    },
+    handleComplate(id) {
+      this.projects = this.projects.map(project => {
+        if (project.id === id) {
+          project.completed = !project.completed
+        }
+        return project
+      })
     }
   }
 }
