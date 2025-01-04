@@ -9,8 +9,8 @@
       <label>Deadline:</label>
       <textarea
         required
-        v-model="deadline"
-      ></textarea>
+        v-model="deadline">
+        </textarea>
       <button>Add Project</button>
     </form>
   </div>
@@ -35,8 +35,8 @@ export default {
           title: this.title,
           deadline: this.deadline,
           completed: false,
-        })
-        ;(this.title = ''), (this.deadline = ''), this.$router.push('/')
+        });
+        (this.title = ''), (this.deadline = ''), this.$router.push('/')
       } catch (error) {
         console.error('Error adding project:', error)
       }
@@ -46,51 +46,80 @@ export default {
 </script>
 
 <style scoped>
-form {
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  /* Butun ekranni egallash */
+  .home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 89.5vh;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #f0f4f8, #d9e6f2);
+    font-family: Arial, sans-serif;
+  }
 
-label {
-  display: block;
-  color: #bbb;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin: 20px 0 10px 0;
-}
+  /* Forma uchun uslub */
+  form {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+  }
 
-input {
-  border: 0;
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  border-bottom: 2px solid #aaa;
-  border-radius: 5px;
-}
+  /* Label uslubi */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+  }
 
-textarea {
-  padding: 10px;
-  border: 1px solid #ddd;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 5px;
-  height: 100px;
-}
+  /* Input va Textarea uslubi */
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
 
-button {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #333;
-  color: white;
-  border: 0;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-}
+  input:focus, textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+    outline: none;
+  }
+
+  /* Tugma uslubi */
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+
+  button:active {
+    background-color: #003f8a;
+    transform: translateY(0);
+  }
 </style>

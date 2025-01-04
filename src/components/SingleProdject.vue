@@ -60,7 +60,7 @@ export default {
     .single-project {
         padding: 10px 20px;
         margin: 20px auto;
-        background-color: white;
+        background: linear-gradient(135deg, #f0f4f8, #d9e6f2);
         border-radius: 4px;
         box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
         border-left: 15px solid #e90074;
