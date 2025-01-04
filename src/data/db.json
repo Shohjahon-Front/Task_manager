@@ -3,13 +3,13 @@
     {
       "id": "1",
       "title": "Complete the Vue.js course",
-      "deadline": "At least three days",
+      "deadline": "At least three days and one day",
       "completed": true
     },
     {
       "id": "2",
       "title": "Complete the React.js course",
-      "deadline": "At least three days",
+      "deadline": "At least three days on",
       "completed": false
     },
     {

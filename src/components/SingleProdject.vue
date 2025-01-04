@@ -5,7 +5,9 @@
            <div class="icons">
                 <span class="material-icons" @click="completeMethod">done</span>
                 <span class="material-icons" @click="deleteProject">delete</span>
-                <span class="material-icons">edit</span>
+                <router-link :to="{ name: 'EditProject', params: { id: project.id } }">
+                    <span class="material-icons">edit</span>
+                </router-link>
            </div>
         </div>
         <div class="deadline" v-if="showDetails">
@@ -18,7 +20,7 @@
 import axios from 'axios'
 
 export default {
-    name: 'SingleProject',
+    name: 'SingleProdject',
     props: {
         project: {
             type: Object,
@@ -27,24 +29,23 @@ export default {
     },
     data() {
         return {
-            showDetails: false,
-            url: 'http://localhost:3000/projects/' + this.project.id
+            showDetails: false
         }
     },
     methods: {
         async deleteProject() {
+            const url = 'http://localhost:3000/projects/' + this.project.id
             try {
-                await axios.delete(this.url)
+                await axios.delete(url)
                 this.$emit('project-deleted', this.project.id)
             } catch (error) {
                 console.error('Error deleting project:', error)
             }
         },
-
-
-        async completeMethod() { 
+        async completeMethod() {
+            const url = 'http://localhost:3000/projects/' + this.project.id
             try {
-                await axios.patch(this.url, {
+                await axios.patch(url, {
                     completed: !this.project.completed
                 })
                 this.$emit('project-updated', this.project.id)
