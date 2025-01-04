@@ -1,7 +1,7 @@
 <template>
     <div class="navbar">
-        <router-link to="/">Home</router-link>
-        <router-link to="/add">Add New Project</router-link>
+        <router-link to="/">HOME</router-link>
+        <router-link to="/add">ADD A NEW PROJECT</router-link>
     </div>
 </template>
 
@@ -12,13 +12,13 @@
         display: flex;
         justify-content: space-around;
         padding: 10px;
-        background-color: #f0f4f8;
+        background: #333;
         border-bottom: 1px solid #d9e6f2;
         border-radius: 4px;
     }
     .navbar a {
         text-decoration: none;
-        color: #2c3e50;
+        color: #2c3e70;
         font-size: 25px;
         transition: 0.3s;
     }

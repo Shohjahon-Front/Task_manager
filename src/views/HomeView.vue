@@ -1,24 +1,39 @@
 <template>
   <div class="home">
-    <div v-for="project in projects" :key="project.id">
-      <SingleProdject :project="project" @project-deleted="handleProject" @project-updated="handleComplete" />
+    <FilterProject @filter-projects="currentFilter=$event" :current="currentFilter" />
+    <div v-for="project in filteredProjects" :key="project.id">
+      <SingleProject :project="project" @project-deleted="handleProject" @project-updated="handleComplete" />
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import SingleProdject from '../components/SingleProdject.vue'
+import SingleProject from '../components/SingleProdject.vue'
+import FilterProject from '../components/FilterProject.vue'
 
 export default {
   name: 'HomeView',
   data () {
     return {
       projects: [],
+      currentFilter: 'all'
     }
   },
   components: {
-    SingleProdject
+    SingleProject,
+    FilterProject
+  },
+  computed: {
+    filteredProjects() {
+      if (this.currentFilter === 'all') {
+        return this.projects
+      } else if (this.currentFilter === 'completed') {
+        return this.projects.filter(project => project.completed)
+      } else if (this.currentFilter === 'incomplete') {
+        return this.projects.filter(project => !project.completed)
+      }
+    }
   },
   async mounted() {
     try {

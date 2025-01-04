@@ -20,7 +20,7 @@
 import axios from 'axios'
 
 export default {
-    name: 'SingleProdject',
+    name: 'SingleProject',
     props: {
         project: {
             type: Object,
